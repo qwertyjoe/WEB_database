@@ -1,0 +1,82 @@
+﻿@model IEnumerable<WebApplication1.money>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>S07352008 記帳系統</title>
+    <link rel="stylesheet" href="../../Content/bootstrap.css">
+    <link rel="stylesheet" href="../../Content/bootstrap.min.css">
+    <script src="../../Scripts/bootstrap.bundle.min.js"></script>
+
+</head>
+<body class="bg-dark text-white">
+    <div class="container p-3 mt-3 ">
+        <h1 class="display-6">
+            金錢異動
+        </h1>
+    </div>
+    
+    <div class="container p-3 my-3">
+        <form method="post" action="/moneys/Create">
+            @Html.AntiForgeryToken()
+            <div class="row">
+                <div class="col-3">
+                    <label for="date">日期</label>
+                    <input class="form-control col-3 " placeholder="日期" id="date" name="date">
+                </div>
+                <div class="col-3">
+                    <label for="thing" class="col-3">項目</label>
+                    <input class="form-control col-3" placeholder="項目" id="thing" name="thing">
+                </div>
+                <div class="col-3">
+                    <label for="pay" class="col-3">支出</label>
+                    <input class="form-control col-3" placeholder="支出" id="pay" name="pay">
+                </div>
+                <div class="col-3">
+                    <label for="earn" class="col-3">收入</label>
+                    <input class="form-control col-3" placeholder="收入" id="earn" name="earn">
+                </div>
+            </div>
+            <input type="submit" style="border:0; padding:0; font-size:0" />
+        </form>
+    </div>
+    <div class="container p-3 my-3">
+        <table class="table table-dark">
+            <thead>
+                <tr>
+                    <th colspan="3" style="text-align:center;">總金額</th>
+                </tr>
+            </thead>
+            <thead>
+                <tr>
+                    <th class="col-2">日期</th>
+                    <th class="col-4">花費項目</th>
+                    <th class="col-2">支出</th>
+                    <th class="col-2">收入</th>
+                    <th class="col-2">修改</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+
+                    <tr>
+                        <td class="col-2"> @item.date</td>
+                        <td class="col-4"> @item.thing</td>
+                        <td class="col-2"> @item.pay</td>
+                        <td class="col-2"> @item.earn</td>
+                        <td class="col-2">
+                            <form method="post" action="/moneys/Delete/@item.id">
+                                @Html.AntiForgeryToken()
+                                <input type="submit" value="Delete" class="btn  btn-outline-danger " />
+                            </form>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</body>
+
+</html>

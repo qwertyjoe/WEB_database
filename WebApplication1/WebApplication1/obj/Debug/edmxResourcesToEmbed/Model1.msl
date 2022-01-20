@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="moneyModelStoreContainer" CdmEntityContainer="moneyEntities">
+    <EntitySetMapping Name="money">
+      <EntityTypeMapping TypeName="moneyModel.money">
+        <MappingFragment StoreEntitySet="money">
+          <ScalarProperty Name="date" ColumnName="date" />
+          <ScalarProperty Name="thing" ColumnName="thing" />
+          <ScalarProperty Name="pay" ColumnName="pay" />
+          <ScalarProperty Name="earn" ColumnName="earn" />
+          <ScalarProperty Name="count" ColumnName="count" />
+          <ScalarProperty Name="id" ColumnName="id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
